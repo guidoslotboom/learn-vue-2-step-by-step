@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>06. The Need For Computed Properties</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <!-- Vue instance wrapper -->
+    <div id="root">
+
+        <h1>All Tasks</h1>
+
+        <ul>
+            <!-- Vue directive 'v-for' for displaying the description value of a task in tasks. -->
+            <!-- Vue directive 'v-if' for filtering for tasks that have been completed. -->
+            <li v-for="task in tasks" v-if="task.completed" v-text="task.description"></li>
+        </ul>
+
+    </div>
+
+    <script>
+
+        // Create a Vue instance.
+        // Use the variable 'app' to easily call the global scope with the Devtools tab Vue.
+        var app = new Vue({
+
+            // Mount vue on this element.
+            el: '#root',
+
+            // The data model with a property
+            data: {
+
+                tasks: [
+                    { description: 'Go to the store', completed: true },
+                    { description: 'Finish screencast', completed: false },
+                    { description: 'Make donation', completed: false },
+                    { description: 'Clear inbox', completed: false },
+                    { description: 'Make dinner', completed: false },
+                    { description: 'Clean room', completed: true },
+                ]
+
+            },
+
+        })
+
+    </script>
+
+</body>
+
+</html>

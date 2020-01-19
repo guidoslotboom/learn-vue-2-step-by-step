@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>06. The Need For Computed Properties</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <!-- Vue instance wrapper -->
+    <div id="root">
+
+        <h2>All Tasks</h2>
+
+        <ul>
+            <!-- Vue directive 'v-for' for displaying the description value of a task in data model 'tasks'. -->
+            <li v-for="task in tasks" v-text="task.description"></li>
+        </ul>
+
+        <h2>Incomplete Tasks</h2>
+
+        <ul>
+            <!-- Vue directive 'v-for' for displaying the description value of a task in the computed property 'incompleteTasks'. -->
+            <li v-for="task in incompleteTasks">
+                <em v-text="task.description"></em>
+                <button @click="completeTask(task)">X</button>
+            </li>
+        </ul>
+
+        <h2>Completed tasks</h2>
+
+        <ul>
+            <li v-for="task in completedTasks">
+                <em v-text="task.description"></em>
+                <button @click="clearTask(task)">X</button>
+            </li>
+        </ul>
+
+    </div>
+
+    <script>
+
+        // Create a Vue instance.
+        // Use the variable 'app' to easily call the global scope with the Devtools tab Vue.
+        // Example for a call with the Devtools tab Console: app.tasks[0].completed = false;
+        var app = new Vue({
+
+            // Mount vue on this element.
+            el: '#root',
+
+            // The data model with a property.
+            data: {
+
+                tasks: [
+                    { description: 'Go to the store', completed: true },
+                    { description: 'Finish screencast', completed: false },
+                    { description: 'Make donation', completed: false },
+                    { description: 'Clear inbox', completed: false },
+                    { description: 'Make dinner', completed: false },
+                    { description: 'Clean room', completed: true },
+                ],
+                completed: false
+
+            },
+
+            // Set a computed property
+            computed: {
+
+                // A computed property
+                incompleteTasks() {
+
+                    // Run through the data array tasks and filter on the incomplete tasks.
+                    return this.tasks.filter(task => !task.completed);
+
+                },
+                completedTasks() {
+
+                    // Run through the data array tasks and filter on the complete tasks.
+                    return this.tasks.filter(task => task.completed);
+
+                },
+
+            },
+
+            methods: {
+                completeTask(task) {
+                    task.completed = true;
+                },
+                clearTask(task) {
+                    task.completed = false;
+                }
+            },
+
+        })
+
+    </script>
+
+</body>
+
+</html>

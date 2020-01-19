@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>01. Basic data binding</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <!-- Vue instance wrapper -->
+    <div id="root">
+
+        <!-- Vue directive 'v-model' for the connection between the 'input' and 'message' property from 'data'. -->
+        <input type="text" id="input" v-model="message">
+
+        <!-- Use the moustache syntax with the 'property' to get the value. -->
+        <p>The value of the input is: {{ message }}.</p>
+
+    </div>
+
+    <script>
+
+        // Variables declared by var keyword are scoped to the immediate function body (hence the function scope)
+        // while let variables are scoped to the immediate enclosing block denoted by { } (hence the block scope).
+        let data = {
+            message: 'Hello World'
+        }
+
+        // Create a Vue instance
+        new Vue({
+
+            // Mount vue on this element.
+            el: '#root',
+
+            // Specify some data from the scoped variable 'data'.
+            // data: data
+
+            // The data model with a property
+            data: {
+                message: 'Hello World'
+            }
+
+        })
+
+    </script>
+
+</body>
+
+</html>

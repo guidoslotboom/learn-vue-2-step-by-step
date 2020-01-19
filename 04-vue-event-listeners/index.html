@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>04. Vue Event Listeners</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <!-- Vue instance wrapper. -->
+    <div id="root">
+
+        <!-- {{ name }} -->
+
+        <!-- Vue directive 'v-for' for displaying the values of names. -->
+        <ul>
+            <li v-for="name in names">{{ name }}</li>
+        </ul>
+
+        <!-- Vue directive 'v-text' for automatically set the text content between the <li> tags. -->
+        <ul>
+            <li v-for="name in names" v-text="name"></li>
+        </ul>
+
+        <!-- Vue directive 'v-model' for the reference with the method 'newName'. -->
+        <input id="input" type="text" v-model="newName">
+
+        <!-- Vue directive 'v-on' for an event listener on the click. -->
+        <button @click="addName">Add Name</button>
+
+    </div>
+
+    <script>
+
+        // Create a Vue instance.
+        // Use the variable 'app' to easily call the global scope with the Devtools tab Vue.
+        // Example for a call with the Devtools tab Console: app.names.push('Susan');
+        var app = new Vue({
+
+            // Mount vue on this element.
+            el: '#root',
+
+            // The data model with a property.
+            data: {
+
+                // Empty property for the input
+                newName: '',
+
+                // Property with a multiple value, an array.
+                names: ['Joe', 'Mary', 'Jane', 'Jack']
+
+            },
+
+            methods: {
+
+                // Fetch the value of the input and add it to the array
+                addName() {
+
+                    // First show an alert.
+                    // alert('adding name');
+
+                    // Get the value from the input and place it in the array with names.
+                    this.names.push(this.newName);
+
+                    // After the push, clear the input.
+                    this.newName = '';
+                }
+
+            },
+
+            // When everything is ready to go, do this first.
+            // mounted() {
+
+            //     // First show an alert.
+            //     // alert('ready');
+
+            //     // Select an element for the event listener.
+            //     document.querySelector('#button').addEventListener('click', () => {
+
+            //         // Initiate where the value comes from.
+            //         let name = document.querySelector('#input');
+
+            //         // Get the value from the input and place it in the array with names.
+            //         app.names.push(name.value);
+
+            //         // After the push, clear the input.
+            //         name.value = '';
+
+            //     });
+
+            // }
+
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>06. The Need For Computed Properties</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <!-- Vue instance wrapper -->
+    <div id="root">
+
+        <p><strong>Show the date:</strong> <span v-text="new Date()"></span></p>
+
+        <p><strong>Data property</strong> {{ message.split('').reverse().join('') }}</p>
+
+        <p><strong>Computed property:</strong> {{ reversedMessage }}</p>
+
+    </div>
+
+    <script>
+
+        // Create a Vue instance.
+        // Use the variable 'app' to easily call the global scope with the Devtools tab Vue.
+        var app = new Vue({
+
+            // Mount vue on this element.
+            el: '#root',
+
+            // The data model with a property
+            data: {
+
+                message: 'Hello World!'
+
+            },
+
+            // Set a computed property
+            computed: {
+
+                reversedMessage() {
+
+                    return this.message.split('').reverse().join('');
+
+                }
+
+            }
+
+        })
+
+    </script>
+
+</body>
+
+</html>

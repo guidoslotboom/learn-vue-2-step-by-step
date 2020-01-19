@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>05. Attribute and Class Binding</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style type="text/css">
+        .color-red {
+            color: red;
+        }
+
+        .color-blue {
+            color: blue;
+        }
+
+        .is-loading {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Vue instance wrapper -->
+    <div id="root">
+
+        <h1 v-bind:class="className">{{ headingTitle }}</h1>
+
+        <button v-bind:class="{ 'is-loading': isLoading }" @click="toggleClass">Click for toggle me</button>
+
+        <button v-bind:title="buttonTitle">Hover over me</button>
+
+    </div>
+
+    <script>
+
+        // Create a Vue instance.
+        // Use the variable 'app' to easily call the global scope with the Devtools tab Vue.
+        var app = new Vue({
+
+            // Mount vue on this element.
+            el: '#root',
+
+            // The data model with a property
+            data: {
+
+                className: 'color-red',
+                headingTitle: 'Hello World!',
+                buttonTitle: 'Now the title is being set trough JavaScript.',
+                isLoading: false
+
+
+            },
+
+            methods: {
+
+                toggleClass() {
+
+                    this.isLoading = true;
+
+                }
+
+            }
+
+        })
+
+    </script>
+
+</body>
+
+</html>
